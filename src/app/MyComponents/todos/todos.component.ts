@@ -18,8 +18,7 @@ export class TodosComponent implements OnInit {
     } 
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   deleteTodo(todo:toDo){
     const index = this.todos.indexOf(todo);
@@ -29,6 +28,12 @@ export class TodosComponent implements OnInit {
   
   addTodo(todo:toDo){
     this.todos.push(todo);
+    localStorage.setItem("todos", JSON.stringify(this.todos));
+  }
+
+  toggleTodo(todo:toDo){
+    const index = this.todos.indexOf(todo);
+    this.todos[index].active = !this.todos[index].active;
     localStorage.setItem("todos", JSON.stringify(this.todos));
   }
 }
