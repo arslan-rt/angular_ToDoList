@@ -7,9 +7,10 @@ import { toDo } from "../../toDo";
   styleUrls: ['./todo-item.component.css']
 })
 export class TodoItemComponent implements OnInit {
-
+  @Input() i: number;
   @Input() todo: toDo;
   @Output() todoDelete: EventEmitter<toDo> = new EventEmitter();
+  @Output() todoCheckbox: EventEmitter<toDo> = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
@@ -17,5 +18,9 @@ export class TodoItemComponent implements OnInit {
 
   onClick(todo: toDo){
     this.todoDelete.emit(todo);
+  }
+
+  onCheckboxClick (todo: toDo){
+    this.todoCheckbox.emit(todo);
   }
 }
